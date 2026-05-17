@@ -11,7 +11,7 @@ class EmergencyAdapter(
     private val list: List<EmergencyModel>
 ) : RecyclerView.Adapter<EmergencyAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(fgview) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image = view.findViewById<ImageView>(R.id.iconImage)
         val title = view.findViewById<TextView>(R.id.titleText)
     }
@@ -19,6 +19,7 @@ class EmergencyAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_emergency, parent, false)
+
         return ViewHolder(view)
     }
 
@@ -27,5 +28,7 @@ class EmergencyAdapter(
         holder.image.setImageResource(list[position].image)
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount(): Int {
+        return list.size
+    }
 }
